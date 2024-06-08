@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('video');
             $table->smallInteger('class',0,1);
             $table->string('subject');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

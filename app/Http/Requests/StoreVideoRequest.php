@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreVideoRequest extends FormRequest
 {
@@ -11,7 +12,8 @@ class StoreVideoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $user = Auth::getUser();
+        return $user->isTeacher() && $user->id == $this->attributes['user_id'];
     }
 
     /**
@@ -22,7 +24,10 @@ class StoreVideoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required',
+            'video' => 'required',
+            'class' => 'required',
+            'subject' => 'required',
         ];
     }
 }
