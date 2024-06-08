@@ -13,7 +13,7 @@ class VideoPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->exists;
     }
 
     /**
@@ -21,7 +21,11 @@ class VideoPolicy
      */
     public function view(User $user, Video $video): bool
     {
-        //
+        if ($user->isTeacher())
+            return true;
+        if ($user['class'] == $video['class'])
+            return true;
+        return false;
     }
 
     /**
@@ -29,7 +33,7 @@ class VideoPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->isTeacher();
     }
 
     /**
@@ -37,7 +41,7 @@ class VideoPolicy
      */
     public function update(User $user, Video $video): bool
     {
-        //
+        return $user['id'] == $video['user_id'];
     }
 
     /**
@@ -45,7 +49,7 @@ class VideoPolicy
      */
     public function delete(User $user, Video $video): bool
     {
-        //
+        return $user['id'] == $video['user_id'];
     }
 
     /**
@@ -53,7 +57,7 @@ class VideoPolicy
      */
     public function restore(User $user, Video $video): bool
     {
-        //
+        return $user['id'] == $video['user_id'];
     }
 
     /**
@@ -61,6 +65,6 @@ class VideoPolicy
      */
     public function forceDelete(User $user, Video $video): bool
     {
-        //
+        return $user['id'] == $video['user_id'];
     }
 }
