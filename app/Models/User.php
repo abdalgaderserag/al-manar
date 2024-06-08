@@ -21,7 +21,7 @@ class User extends Model implements
 
     /**
      * The attributes that are mass assignable.
-     *
+     * result
      * @var array<int, string>
      */
     protected $fillable = [
@@ -30,6 +30,7 @@ class User extends Model implements
         'password',
         'class',
         'subject',
+        'contact'
     ];
 
     /**

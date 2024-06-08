@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('subject');
             $table->integer('class',0,1);
             $table->string('password');
+            $table->string('contact');
             $table->rememberToken();
             $table->timestamps();
         });
