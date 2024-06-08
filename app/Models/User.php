@@ -61,4 +61,9 @@ class User extends Model implements
             return true;
         return false;
     }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
 }

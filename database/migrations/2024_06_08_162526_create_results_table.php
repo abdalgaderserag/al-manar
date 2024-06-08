@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id',0,1);
+            $table->json('subjects');
+            $table->json('score');
+            $table->boolean('type')->default(0);
+            $table->smallInteger('class',0,1);
+            $table->year('year');
             $table->timestamps();
         });
     }

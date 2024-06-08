@@ -13,7 +13,7 @@ class ResultPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->isTeacher();
     }
 
     /**
@@ -21,7 +21,7 @@ class ResultPolicy
      */
     public function view(User $user, Result $result): bool
     {
-        //
+        return  $user['id'] == $result['user_id'];
     }
 
     /**
@@ -29,7 +29,7 @@ class ResultPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -37,7 +37,7 @@ class ResultPolicy
      */
     public function update(User $user, Result $result): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -45,7 +45,7 @@ class ResultPolicy
      */
     public function delete(User $user, Result $result): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class ResultPolicy
      */
     public function restore(User $user, Result $result): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class ResultPolicy
      */
     public function forceDelete(User $user, Result $result): bool
     {
-        //
+        return false;
     }
 }

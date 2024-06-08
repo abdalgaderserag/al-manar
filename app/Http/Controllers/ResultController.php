@@ -5,46 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Result;
 use App\Http\Requests\StoreResultRequest;
 use App\Http\Requests\UpdateResultRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ResultController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($year)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreResultRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Result $result)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateResultRequest $request, Result $result)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Result $result)
-    {
-        //
+        $user = Auth::getUser();
+        if ($user->isTeacher)
+            return response('not a student',403);
+        $results = $user->results();
+        $results = $results->where('year','=',$year);
+        return response($results);
     }
 }
