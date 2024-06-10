@@ -22,7 +22,6 @@ class VideoController extends Controller
      */
     public function store(StoreVideoRequest $request)
     {
-//        'user_id', 'title', 'video', 'class', 'subject', 'note'
         $user_id = Auth::id();
         $video = new Video($request->all());
         $video['user_id'] = $user_id;
