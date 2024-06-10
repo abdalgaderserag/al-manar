@@ -22,12 +22,8 @@ class scheduler
     protected function makeSchedule($cla)
     {
         $schedule = config('manar.schedules')[date('N')][$cla];
-        $date = Date::tomorrow()->setHour(config('manar.date.first'));
-        $date->subMinutes(config('manar.date.class'));
-        $date->subMinutes(config('manar.date.break'));
         foreach ($schedule as $class){
-            $date->addMinutes(config('manar.date.class'));
-            $date->addMinutes(config('manar.date.break'));
+            $date = Date::tomorrow()->setHour(config('manar.date'));
             $subject = new Subject();
             $subject['teacher_id'] = $class['teacher_id'];
             $subject['date'] = $date;
