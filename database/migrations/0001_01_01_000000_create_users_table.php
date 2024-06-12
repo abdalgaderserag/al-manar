@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
-            $table->string('subject');
-            $table->integer('class',0,1);
+            $table->string('subject')->nullable();
+            $table->integer('class',0,1)->nullable();
             $table->string('password');
             $table->string('contact');
             $table->rememberToken();

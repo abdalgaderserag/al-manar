@@ -20,8 +20,6 @@ class VideoFactory extends Factory
             'user_id' => 1,
             'title' => $this->faker->name,
             'video' => $this->faker->url,
-            'class' => rand(1,6),
-            'subject' => 'math',
             'note' => $this->faker->paragraph
         ];
     }

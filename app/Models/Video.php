@@ -10,6 +10,6 @@ class Video extends Model
     use HasFactory;
 
     protected $fillable=[
-        'user_id', 'title', 'video', 'class', 'subject', 'note'
+        'user_id', 'title', 'video', 'class', 'note'
     ];
 }

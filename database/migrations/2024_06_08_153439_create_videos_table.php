@@ -16,7 +16,6 @@ return new class extends Migration
             $table->integer('user_id',0,1);
             $table->string('title');
             $table->text('video');
-            $table->string('subject');
             $table->text('note')->nullable();
             $table->timestamps();
         });

@@ -23,16 +23,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-//        'name',
-//        'username',
-//        'password',
-//        'class',
-//        'subject',
         return [
             'name' => fake()->name(),
             'username' => fake()->unique()->slug,
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'contact' => fake()->phoneNumber,
         ];
     }
 }
