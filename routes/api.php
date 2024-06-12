@@ -11,6 +11,9 @@ Route::get('/user', function () {
     $user['token'] = $user->createToken($user->name. '-token')->plainTextToken;
     return $user;
 });
+Route::get('/log',function (){
+    return \Illuminate\Support\Facades\Auth::user();
+})->middleware('auth:sanctum');
 
 
 //
@@ -27,7 +30,10 @@ Route::middleware('guest')->namespace('App\Http\Controllers')->group(function ()
 });
 
 // admin panel routes
-Route::middleware('admin')->namespace('App\Http\Controllers')->group(function (){
+Route::middleware('auth:sanctum')->namespace('App\Http\Controllers')->group(function (){
+    Route::get('test',function (){
+        return response('yes');
+    });
     Route::post('register','Auth\UserController@register')->name('register');
     Route::put('user/edit/{user}','Auth\UserController@editUser')->name('user.edit');
     Route::delete('user/delete/{user}','Auth\UserController@deleteUser')->name('user.delete');

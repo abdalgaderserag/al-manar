@@ -27,6 +27,11 @@ class DatabaseSeeder extends Seeder
             'class' => 6,
         ]);
 
+        User::factory()->create([
+            'name' => 'Admin',
+            'username' => 'admin',
+        ]);
+
         Video::factory(10)->create();
     }
 }

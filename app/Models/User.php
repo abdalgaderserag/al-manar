@@ -63,6 +63,14 @@ class User extends Model implements
         return false;
     }
 
+    public function isAdmin()
+    {
+        if (empty($this->hidden['class']) && empty($this->hidden['subject'])){
+            return true;
+        }
+        return false;
+    }
+
     public function results()
     {
         return $this->hasMany(Result::class);
